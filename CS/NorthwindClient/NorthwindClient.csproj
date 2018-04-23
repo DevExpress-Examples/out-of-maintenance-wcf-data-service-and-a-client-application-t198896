@@ -1,0 +1,539 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{75E64F55-061A-4754-9A77-B903E7DC7EC0}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NorthwindClient</RootNamespace>
+    <AssemblyName>NorthwindClient</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Data.v14.2, Version=14.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Images.v14.2, Version=14.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Mvvm.v14.2, Version=14.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v14.2.Core, Version=14.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.Controls.v14.2, Version=14.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.Core.v14.2, Version=14.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.Docking.v14.2, Version=14.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.Grid.v14.2, Version=14.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.Grid.v14.2.Core, Version=14.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.Layout.v14.2.Core, Version=14.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.LayoutControl.v14.2, Version=14.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.NavBar.v14.2, Version=14.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.Printing.v14.2, Version=14.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.Ribbon.v14.2, Version=14.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.Themes.Office2013DarkGray.v14.2, Version=14.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Data.Edm, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Data.Edm.5.0.0\lib\net40\Microsoft.Data.Edm.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.OData, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Data.OData.5.0.0\lib\net40\Microsoft.Data.OData.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Services.Client, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Data.Services.Client.5.0.0\lib\net40\Microsoft.Data.Services.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Spatial, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\System.Spatial.5.0.0\lib\net40\System.Spatial.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Common\CommonResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CommonResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Common\DataModel\DbExceptions.cs" />
+    <Compile Include="Common\DataModel\DesignTimeReadOnlyRepository.cs" />
+    <Compile Include="Common\DataModel\DesignTimeRepository.cs" />
+    <Compile Include="Common\DataModel\DesignTimeUnitOfWork.cs" />
+    <Compile Include="Common\DataModel\EntityState.cs" />
+    <Compile Include="Common\DataModel\IReadOnlyRepository.cs" />
+    <Compile Include="Common\DataModel\IRepository.cs" />
+    <Compile Include="Common\DataModel\IUnitOfWork.cs" />
+    <Compile Include="Common\DataModel\UnitOfWorkBase.cs" />
+    <Compile Include="Common\DataModel\WCF\DbExceptionsConverter.cs" />
+    <Compile Include="Common\DataModel\WCF\DbReadOnlyRepository.cs" />
+    <Compile Include="Common\DataModel\WCF\DbRepository.cs" />
+    <Compile Include="Common\DataModel\WCF\DbUnitOfWork.cs" />
+    <Compile Include="Common\DataModel\WCF\QueryableWrapper.cs" />
+    <Compile Include="Common\Utils\DbExtensions.cs" />
+    <Compile Include="Common\Utils\ExpressionHelper.cs" />
+    <Compile Include="Common\ViewModel\CollectionViewModel.cs" />
+    <Compile Include="Common\ViewModel\DocumentsViewModel.cs" />
+    <Compile Include="Common\ViewModel\EntitiesViewModel.cs" />
+    <Compile Include="Common\ViewModel\ISingleObjectViewModel.cs" />
+    <Compile Include="Common\ViewModel\LookUpEntitiesViewModel.cs" />
+    <Compile Include="Common\ViewModel\Messages.cs" />
+    <Compile Include="Common\ViewModel\PeekCollectionViewModel.cs" />
+    <Compile Include="Common\ViewModel\ReadOnlyCollectionViewModel.cs" />
+    <Compile Include="Common\ViewModel\SingleObjectViewModel.cs" />
+    <Compile Include="Northwind2012EntitiesDataModel\DesignTimeNorthwind2012EntitiesUnitOfWork.cs" />
+    <Compile Include="Northwind2012EntitiesDataModel\INorthwind2012EntitiesUnitOfWork.cs" />
+    <Compile Include="Northwind2012EntitiesDataModel\Northwind2012EntitiesUnitOfWork.cs" />
+    <Compile Include="Northwind2012EntitiesDataModel\UnitOfWorkSource.cs" />
+    <Compile Include="Service References\ServiceReference1\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.datasvcmap</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\Alphabetical_list_of_product\Alphabetical_list_of_productCollectionViewModel.cs" />
+    <Compile Include="ViewModels\Category\CategoryCollectionViewModel.cs" />
+    <Compile Include="ViewModels\Category\CategoryViewModel.cs" />
+    <Compile Include="ViewModels\Category_Sales_for_1997\Category_Sales_for_1997CollectionViewModel.cs" />
+    <Compile Include="ViewModels\Category_Sales_for_1997\Category_Sales_for_1997ViewModel.cs" />
+    <Compile Include="ViewModels\Current_Product_List\Current_Product_ListCollectionViewModel.cs" />
+    <Compile Include="ViewModels\CustomerDemographic\CustomerDemographicCollectionViewModel.cs" />
+    <Compile Include="ViewModels\CustomerDemographic\CustomerDemographicViewModel.cs" />
+    <Compile Include="ViewModels\Customer\CustomerCollectionViewModel.cs" />
+    <Compile Include="ViewModels\Customer\CustomerViewModel.cs" />
+    <Compile Include="ViewModels\Customer_and_Suppliers_by_City\Customer_and_Suppliers_by_CityCollectionViewModel.cs" />
+    <Compile Include="ViewModels\Employee\EmployeeCollectionViewModel.cs" />
+    <Compile Include="ViewModels\Employee\EmployeeViewModel.cs" />
+    <Compile Include="ViewModels\Invoice\InvoiceCollectionViewModel.cs" />
+    <Compile Include="ViewModels\Northwind2012EntitiesViewModel.cs" />
+    <Compile Include="ViewModels\Orders_Qry\Orders_QryCollectionViewModel.cs" />
+    <Compile Include="ViewModels\Order\OrderCollectionViewModel.cs" />
+    <Compile Include="ViewModels\Order\OrderViewModel.cs" />
+    <Compile Include="ViewModels\Order_Details_Extended\Order_Details_ExtendedCollectionViewModel.cs" />
+    <Compile Include="ViewModels\Order_Detail\Order_DetailCollectionViewModel.cs" />
+    <Compile Include="ViewModels\Order_Subtotal\Order_SubtotalCollectionViewModel.cs" />
+    <Compile Include="ViewModels\Order_Subtotal\Order_SubtotalViewModel.cs" />
+    <Compile Include="ViewModels\Products_Above_Average_Price\Products_Above_Average_PriceCollectionViewModel.cs" />
+    <Compile Include="ViewModels\Products_Above_Average_Price\Products_Above_Average_PriceViewModel.cs" />
+    <Compile Include="ViewModels\Products_by_Category\Products_by_CategoryCollectionViewModel.cs" />
+    <Compile Include="ViewModels\Product\ProductCollectionViewModel.cs" />
+    <Compile Include="ViewModels\Product\ProductViewModel.cs" />
+    <Compile Include="ViewModels\Product_Sales_for_1997\Product_Sales_for_1997CollectionViewModel.cs" />
+    <Compile Include="ViewModels\Region\RegionCollectionViewModel.cs" />
+    <Compile Include="ViewModels\Region\RegionViewModel.cs" />
+    <Compile Include="ViewModels\Sales_by_Category\Sales_by_CategoryCollectionViewModel.cs" />
+    <Compile Include="ViewModels\Sales_Totals_by_Amount\Sales_Totals_by_AmountCollectionViewModel.cs" />
+    <Compile Include="ViewModels\Shipper\ShipperCollectionViewModel.cs" />
+    <Compile Include="ViewModels\Shipper\ShipperViewModel.cs" />
+    <Compile Include="ViewModels\Summary_of_Sales_by_Quarter\Summary_of_Sales_by_QuarterCollectionViewModel.cs" />
+    <Compile Include="ViewModels\Summary_of_Sales_by_Quarter\Summary_of_Sales_by_QuarterViewModel.cs" />
+    <Compile Include="ViewModels\Summary_of_Sales_by_Year\Summary_of_Sales_by_YearCollectionViewModel.cs" />
+    <Compile Include="ViewModels\Summary_of_Sales_by_Year\Summary_of_Sales_by_YearViewModel.cs" />
+    <Compile Include="ViewModels\Supplier\SupplierCollectionViewModel.cs" />
+    <Compile Include="ViewModels\Supplier\SupplierViewModel.cs" />
+    <Compile Include="ViewModels\Territory\TerritoryCollectionViewModel.cs" />
+    <Compile Include="ViewModels\Territory\TerritoryViewModel.cs" />
+    <Compile Include="Views\Alphabetical_list_of_product\Alphabetical_list_of_productCollectionView.xaml.cs">
+      <DependentUpon>Alphabetical_list_of_productCollectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Category\CategoryCollectionView.xaml.cs">
+      <DependentUpon>CategoryCollectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Category\CategoryView.xaml.cs">
+      <DependentUpon>CategoryView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Category_Sales_for_1997\Category_Sales_for_1997CollectionView.xaml.cs">
+      <DependentUpon>Category_Sales_for_1997CollectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Category_Sales_for_1997\Category_Sales_for_1997View.xaml.cs">
+      <DependentUpon>Category_Sales_for_1997View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Current_Product_List\Current_Product_ListCollectionView.xaml.cs">
+      <DependentUpon>Current_Product_ListCollectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CustomerDemographic\CustomerDemographicCollectionView.xaml.cs">
+      <DependentUpon>CustomerDemographicCollectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CustomerDemographic\CustomerDemographicView.xaml.cs">
+      <DependentUpon>CustomerDemographicView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Customer\CustomerCollectionView.xaml.cs">
+      <DependentUpon>CustomerCollectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Customer\CustomerView.xaml.cs">
+      <DependentUpon>CustomerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Customer_and_Suppliers_by_City\Customer_and_Suppliers_by_CityCollectionView.xaml.cs">
+      <DependentUpon>Customer_and_Suppliers_by_CityCollectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Employee\EmployeeCollectionView.xaml.cs">
+      <DependentUpon>EmployeeCollectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Employee\EmployeeView.xaml.cs">
+      <DependentUpon>EmployeeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Invoice\InvoiceCollectionView.xaml.cs">
+      <DependentUpon>InvoiceCollectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Northwind2012EntitiesView.xaml.cs">
+      <DependentUpon>Northwind2012EntitiesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Orders_Qry\Orders_QryCollectionView.xaml.cs">
+      <DependentUpon>Orders_QryCollectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Order\OrderCollectionView.xaml.cs">
+      <DependentUpon>OrderCollectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Order\OrderView.xaml.cs">
+      <DependentUpon>OrderView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Order_Details_Extended\Order_Details_ExtendedCollectionView.xaml.cs">
+      <DependentUpon>Order_Details_ExtendedCollectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Order_Detail\Order_DetailCollectionView.xaml.cs">
+      <DependentUpon>Order_DetailCollectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Order_Subtotal\Order_SubtotalCollectionView.xaml.cs">
+      <DependentUpon>Order_SubtotalCollectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Order_Subtotal\Order_SubtotalView.xaml.cs">
+      <DependentUpon>Order_SubtotalView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Products_Above_Average_Price\Products_Above_Average_PriceCollectionView.xaml.cs">
+      <DependentUpon>Products_Above_Average_PriceCollectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Products_Above_Average_Price\Products_Above_Average_PriceView.xaml.cs">
+      <DependentUpon>Products_Above_Average_PriceView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Products_by_Category\Products_by_CategoryCollectionView.xaml.cs">
+      <DependentUpon>Products_by_CategoryCollectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Product\ProductCollectionView.xaml.cs">
+      <DependentUpon>ProductCollectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Product\ProductView.xaml.cs">
+      <DependentUpon>ProductView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Product_Sales_for_1997\Product_Sales_for_1997CollectionView.xaml.cs">
+      <DependentUpon>Product_Sales_for_1997CollectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Region\RegionCollectionView.xaml.cs">
+      <DependentUpon>RegionCollectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Region\RegionView.xaml.cs">
+      <DependentUpon>RegionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Sales_by_Category\Sales_by_CategoryCollectionView.xaml.cs">
+      <DependentUpon>Sales_by_CategoryCollectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Sales_Totals_by_Amount\Sales_Totals_by_AmountCollectionView.xaml.cs">
+      <DependentUpon>Sales_Totals_by_AmountCollectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shipper\ShipperCollectionView.xaml.cs">
+      <DependentUpon>ShipperCollectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shipper\ShipperView.xaml.cs">
+      <DependentUpon>ShipperView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Summary_of_Sales_by_Quarter\Summary_of_Sales_by_QuarterCollectionView.xaml.cs">
+      <DependentUpon>Summary_of_Sales_by_QuarterCollectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Summary_of_Sales_by_Quarter\Summary_of_Sales_by_QuarterView.xaml.cs">
+      <DependentUpon>Summary_of_Sales_by_QuarterView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Summary_of_Sales_by_Year\Summary_of_Sales_by_YearCollectionView.xaml.cs">
+      <DependentUpon>Summary_of_Sales_by_YearCollectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Summary_of_Sales_by_Year\Summary_of_Sales_by_YearView.xaml.cs">
+      <DependentUpon>Summary_of_Sales_by_YearView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Supplier\SupplierCollectionView.xaml.cs">
+      <DependentUpon>SupplierCollectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Supplier\SupplierView.xaml.cs">
+      <DependentUpon>SupplierView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Territory\TerritoryCollectionView.xaml.cs">
+      <DependentUpon>TerritoryCollectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Territory\TerritoryView.xaml.cs">
+      <DependentUpon>TerritoryView.xaml</DependentUpon>
+    </Compile>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Views\Alphabetical_list_of_product\Alphabetical_list_of_productCollectionView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Category\CategoryCollectionView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Category\CategoryView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Category_Sales_for_1997\Category_Sales_for_1997CollectionView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Category_Sales_for_1997\Category_Sales_for_1997View.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Current_Product_List\Current_Product_ListCollectionView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\CustomerDemographic\CustomerDemographicCollectionView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\CustomerDemographic\CustomerDemographicView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Customer\CustomerCollectionView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Customer\CustomerView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Customer_and_Suppliers_by_City\Customer_and_Suppliers_by_CityCollectionView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Employee\EmployeeCollectionView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Employee\EmployeeView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Invoice\InvoiceCollectionView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Northwind2012EntitiesView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Orders_Qry\Orders_QryCollectionView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Order\OrderCollectionView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Order\OrderView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Order_Details_Extended\Order_Details_ExtendedCollectionView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Order_Detail\Order_DetailCollectionView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Order_Subtotal\Order_SubtotalCollectionView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Order_Subtotal\Order_SubtotalView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Products_Above_Average_Price\Products_Above_Average_PriceCollectionView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Products_Above_Average_Price\Products_Above_Average_PriceView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Products_by_Category\Products_by_CategoryCollectionView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Product\ProductCollectionView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Product\ProductView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Product_Sales_for_1997\Product_Sales_for_1997CollectionView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Region\RegionCollectionView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Region\RegionView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Sales_by_Category\Sales_by_CategoryCollectionView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Sales_Totals_by_Amount\Sales_Totals_by_AmountCollectionView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Shipper\ShipperCollectionView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Shipper\ShipperView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Summary_of_Sales_by_Quarter\Summary_of_Sales_by_QuarterCollectionView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Summary_of_Sales_by_Quarter\Summary_of_Sales_by_QuarterView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Summary_of_Sales_by_Year\Summary_of_Sales_by_YearCollectionView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Summary_of_Sales_by_Year\Summary_of_Sales_by_YearView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Supplier\SupplierCollectionView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Supplier\SupplierView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Territory\TerritoryCollectionView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Territory\TerritoryView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Common\CommonResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CommonResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+    <None Include="Service References\ServiceReference1\service.edmx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ServiceReferenceMetadataStorage Include="Service References\ServiceReference1\">
+      <Type>datasvcmap</Type>
+    </ServiceReferenceMetadataStorage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceReference1\Reference.datasvcmap">
+      <Generator>DataServicesCoreClientGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

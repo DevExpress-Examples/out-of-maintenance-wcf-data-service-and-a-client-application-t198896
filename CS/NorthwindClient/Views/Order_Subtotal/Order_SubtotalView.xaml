@@ -1,0 +1,55 @@
+<UserControl x:Class="NorthwindClient.Views.Order_SubtotalView"
+xmlns="http://schemas.microsoft.com/netfx/2009/xaml/presentation"
+xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon"
+xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"
+xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+xmlns:viewmodel="clr-namespace:NorthwindClient.ViewModels"
+xmlns:system="clr-namespace:System;assembly=mscorlib"
+
+mc:Ignorable="d"
+d:DesignHeight="400" d:DesignWidth="600"
+DataContext="{dxmvvm:ViewModelSource viewmodel:Order_SubtotalViewModel}">
+    <dxmvvm:Interaction.Behaviors>
+        <dx:DXMessageBoxService/>
+    </dxmvvm:Interaction.Behaviors>
+
+    <Grid>
+        <DockPanel>
+            <dxr:RibbonControl RibbonStyle="Office2010" DockPanel.Dock="Top">
+                <dxr:RibbonDefaultPageCategory Caption="defaultCategory">
+                    <dxr:RibbonPage Caption="Home">
+                        <dxr:RibbonPageGroup Caption="Order Subtotal Tasks">
+                            <dxb:BarButtonItem Content="Save" Command="{Binding SaveCommand}" LargeGlyph="{dx:DXImage Image=Save_32x32.png}" Glyph="{dx:DXImage Image=Save_16x16.png}"/>
+                            <dxb:BarButtonItem Content="Save And Close" Command="{Binding SaveAndCloseCommand}" LargeGlyph="{dx:DXImage Image=SaveAndClose_32x32.png}" Glyph="{dx:DXImage Image=SaveAndClose_16x16.png}"/>
+                            <dxb:BarButtonItem Content="Reset Changes" Command="{Binding ResetCommand}" LargeGlyph="{dx:DXImage Image=Reset_32x32.png}" Glyph="{dx:DXImage Image=Reset_16x16.png}"/>
+                            <dxb:BarButtonItem Content="Delete" Command="{Binding DeleteCommand}" LargeGlyph="{dx:DXImage Image=Delete_32x32.png}" Glyph="{dx:DXImage Image=Delete_16x16.png}"/>
+                            <dxb:BarButtonItem Content="Close" Command="{Binding CloseCommand}" LargeGlyph="{dx:DXImage Image=Close_32x32.png}" Glyph="{dx:DXImage Image=Close_16x16.png}"/>
+                        </dxr:RibbonPageGroup>
+                    </dxr:RibbonPage>
+                </dxr:RibbonDefaultPageCategory>
+            </dxr:RibbonControl>
+            <dxr:RibbonStatusBarControl DockPanel.Dock="Bottom"/>
+            <Grid>
+                <dxlc:LayoutControl Orientation="Vertical">
+                    <dxmvvm:Interaction.Behaviors>
+                        <dxmvvm:EventToCommand Event="{x:Static Binding.SourceUpdatedEvent}" Command="{Binding UpdateCommand}" />
+                    </dxmvvm:Interaction.Behaviors>
+                    <dxlc:LayoutItem Label="Order ID" >
+                        <dxe:TextEdit EditValue="{Binding Entity.OrderID, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnSourceUpdated=True}" MaskType="Numeric" Mask="d" MaskUseAsDisplayFormat="True" HorizontalContentAlignment="Right" />
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Label="Subtotal" >
+                        <dxe:TextEdit EditValue="{Binding Entity.Subtotal, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnSourceUpdated=True}" MaskType="Numeric" HorizontalContentAlignment="Right" EditValueType="system:Decimal" AllowNullInput="True" />
+                    </dxlc:LayoutItem>
+
+                </dxlc:LayoutControl>
+            </Grid>
+        </DockPanel>
+    </Grid>
+</UserControl>

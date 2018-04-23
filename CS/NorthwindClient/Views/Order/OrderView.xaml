@@ -1,0 +1,142 @@
+<UserControl x:Class="NorthwindClient.Views.OrderView"
+xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon"
+xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"
+xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+xmlns:viewmodel="clr-namespace:NorthwindClient.ViewModels"
+xmlns:system="clr-namespace:System;assembly=mscorlib"
+
+mc:Ignorable="d"
+d:DesignHeight="400" d:DesignWidth="600"
+DataContext="{dxmvvm:ViewModelSource viewmodel:OrderViewModel}">
+    <dxmvvm:Interaction.Behaviors>
+        <dx:DXMessageBoxService/>
+    </dxmvvm:Interaction.Behaviors>
+
+    <Grid>
+        <DockPanel>
+            <dxr:RibbonControl RibbonStyle="Office2010" DockPanel.Dock="Top">
+                <dxr:RibbonDefaultPageCategory Caption="defaultCategory">
+                    <dxr:RibbonPage Caption="Home">
+                        <dxr:RibbonPageGroup Caption="Order Tasks">
+                            <dxb:BarButtonItem Content="Save" Command="{Binding SaveCommand}" LargeGlyph="{dx:DXImage Image=Save_32x32.png}" Glyph="{dx:DXImage Image=Save_16x16.png}"/>
+                            <dxb:BarButtonItem Content="Save And Close" Command="{Binding SaveAndCloseCommand}" LargeGlyph="{dx:DXImage Image=SaveAndClose_32x32.png}" Glyph="{dx:DXImage Image=SaveAndClose_16x16.png}"/>
+                            <dxb:BarButtonItem Content="Reset Changes" Command="{Binding ResetCommand}" LargeGlyph="{dx:DXImage Image=Reset_32x32.png}" Glyph="{dx:DXImage Image=Reset_16x16.png}"/>
+                            <dxb:BarButtonItem Content="Delete" Command="{Binding DeleteCommand}" LargeGlyph="{dx:DXImage Image=Delete_32x32.png}" Glyph="{dx:DXImage Image=Delete_16x16.png}"/>
+                            <dxb:BarButtonItem Content="Close" Command="{Binding CloseCommand}" LargeGlyph="{dx:DXImage Image=Close_32x32.png}" Glyph="{dx:DXImage Image=Close_16x16.png}"/>
+                        </dxr:RibbonPageGroup>
+                    </dxr:RibbonPage>
+                </dxr:RibbonDefaultPageCategory>
+            </dxr:RibbonControl>
+            <dxr:RibbonStatusBarControl DockPanel.Dock="Bottom"/>
+            <Grid>
+                <dxlc:LayoutControl Orientation="Vertical">
+                    <dxmvvm:Interaction.Behaviors>
+                        <dxmvvm:EventToCommand Event="{x:Static Binding.SourceUpdatedEvent}" Command="{Binding UpdateCommand}" />
+                    </dxmvvm:Interaction.Behaviors>
+                    <dxlc:LayoutItem Label="Order ID" >
+                        <dxe:TextEdit EditValue="{Binding Entity.OrderID, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnSourceUpdated=True}" MaskType="Numeric" Mask="d" MaskUseAsDisplayFormat="True" HorizontalContentAlignment="Right" />
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Label="Order Date" >
+                        <dxe:DateEdit EditValue="{Binding Entity.OrderDate, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnSourceUpdated=True}" />
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Label="Required Date" >
+                        <dxe:DateEdit EditValue="{Binding Entity.RequiredDate, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnSourceUpdated=True}" />
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Label="Shipped Date" >
+                        <dxe:DateEdit EditValue="{Binding Entity.ShippedDate, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnSourceUpdated=True}" />
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Label="Freight" >
+                        <dxe:TextEdit EditValue="{Binding Entity.Freight, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnSourceUpdated=True}" MaskType="Numeric" HorizontalContentAlignment="Right" EditValueType="system:Decimal" AllowNullInput="True" />
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Label="Ship Name" >
+                        <dxe:TextEdit EditValue="{Binding Entity.ShipName, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnSourceUpdated=True}" />
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Label="Ship Address" >
+                        <dxe:TextEdit EditValue="{Binding Entity.ShipAddress, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnSourceUpdated=True}" />
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Label="Ship City" >
+                        <dxe:TextEdit EditValue="{Binding Entity.ShipCity, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnSourceUpdated=True}" />
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Label="Ship Region" >
+                        <dxe:TextEdit EditValue="{Binding Entity.ShipRegion, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnSourceUpdated=True}" />
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Label="Ship Postal Code" >
+                        <dxe:TextEdit EditValue="{Binding Entity.ShipPostalCode, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnSourceUpdated=True}" />
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Label="Ship Country" >
+                        <dxe:TextEdit EditValue="{Binding Entity.ShipCountry, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnSourceUpdated=True}" />
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Label="Customer" >
+                        <dxg:LookUpEdit EditValue="{Binding Entity.CustomerID, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnSourceUpdated=True}" ItemsSource="{Binding LookUpCustomers.Entities}" ValueMember="CustomerID" DisplayMember="CompanyName" IsTextEditable="False" AllowUpdateTwoWayBoundPropertiesOnSynchronization="False" >
+                            <dxg:LookUpEdit.PopupContentTemplate>
+                                <ControlTemplate TargetType="ContentControl" >
+                                    <dxg:GridControl x:Name="PART_GridControl" ShowBorder="False" ShowLoadingPanel="{Binding LookUpCustomers.IsLoading}" />
+                                </ControlTemplate>
+                            </dxg:LookUpEdit.PopupContentTemplate>
+                        </dxg:LookUpEdit>
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Label="Employee" >
+                        <dxg:LookUpEdit EditValue="{Binding Entity.EmployeeID, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnSourceUpdated=True}" ItemsSource="{Binding LookUpEmployees.Entities}" ValueMember="EmployeeID" DisplayMember="LastName" IsTextEditable="False" AllowUpdateTwoWayBoundPropertiesOnSynchronization="False" >
+                            <dxg:LookUpEdit.PopupContentTemplate>
+                                <ControlTemplate TargetType="ContentControl" >
+                                    <dxg:GridControl x:Name="PART_GridControl" ShowBorder="False" ShowLoadingPanel="{Binding LookUpEmployees.IsLoading}" />
+                                </ControlTemplate>
+                            </dxg:LookUpEdit.PopupContentTemplate>
+                        </dxg:LookUpEdit>
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Label="Shipper" >
+                        <dxg:LookUpEdit EditValue="{Binding Entity.ShipVia, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnSourceUpdated=True}" ItemsSource="{Binding LookUpShippers.Entities}" ValueMember="ShipperID" DisplayMember="CompanyName" IsTextEditable="False" AllowUpdateTwoWayBoundPropertiesOnSynchronization="False" >
+                            <dxg:LookUpEdit.PopupContentTemplate>
+                                <ControlTemplate TargetType="ContentControl" >
+                                    <dxg:GridControl x:Name="PART_GridControl" ShowBorder="False" ShowLoadingPanel="{Binding LookUpShippers.IsLoading}" />
+                                </ControlTemplate>
+                            </dxg:LookUpEdit.PopupContentTemplate>
+                        </dxg:LookUpEdit>
+                    </dxlc:LayoutItem>
+
+                    <dxlc:LayoutGroup View="Tabs" MinHeight="250">
+                        <Grid dxb:MergingProperties.AllowMerging="False" dxb:BarNameScope.IsScopeOwner="True" DataContext="{Binding OrderOrder_DetailsDetails}" dxlc:LayoutControl.TabHeader="Order_Details">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <dxb:ToolBarControl>
+                                <dxb:BarButtonItem BarItemDisplayMode="ContentAndGlyph" Content="Refresh" Command="{Binding RefreshCommand}"  Glyph="{dx:DXImage Image=Refresh_16x16.png}"/>
+                            </dxb:ToolBarControl>
+                            <dxg:GridControl ItemsSource="{Binding Entities}" SelectedItem="{Binding SelectedEntity}" ShowLoadingPanel="{Binding IsLoading}" Grid.Row="1">
+                                <dxg:GridControl.Columns>
+                                    <dxg:GridColumn IsSmart="True" FieldName="UnitPrice" />
+                                    <dxg:GridColumn IsSmart="True" FieldName="Quantity" />
+                                    <dxg:GridColumn IsSmart="True" FieldName="Discount" />
+                                    <dxg:GridColumn FieldName="Order.ShipName" Header="Order" ReadOnly="True" />
+                                    <dxg:GridColumn FieldName="Product.ProductName" Header="Product" ReadOnly="True" />
+                                </dxg:GridControl.Columns>
+                                <dxg:GridControl.TotalSummary>
+                                    <dxg:GridSummaryItem SummaryType="Count" Alignment="Right"/>
+                                </dxg:GridControl.TotalSummary>
+                                <dxg:GridControl.GroupSummary>
+                                    <dxg:GridSummaryItem SummaryType="Count"/>
+                                </dxg:GridControl.GroupSummary>
+                                <dxg:GridControl.View>
+                                    <dxg:TableView AllowEditing="False" ShowFixedTotalSummary="True" AllowPerPixelScrolling="True" ShowGroupPanel="False">
+                                        <dxg:TableView.RowCellMenuCustomizations>
+                                            <dxb:BarButtonItem Content="Refresh" Command="{Binding View.DataContext.RefreshCommand}"  Glyph="{dx:DXImage Image=Refresh_16x16.png}"/>
+                                        </dxg:TableView.RowCellMenuCustomizations>
+                                    </dxg:TableView>
+                                </dxg:GridControl.View>
+                            </dxg:GridControl>
+                        </Grid>
+                    </dxlc:LayoutGroup>
+                </dxlc:LayoutControl>
+            </Grid>
+        </DockPanel>
+    </Grid>
+</UserControl>

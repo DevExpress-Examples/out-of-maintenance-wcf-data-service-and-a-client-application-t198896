@@ -1,0 +1,124 @@
+<UserControl x:Class="NorthwindClient.Views.ProductView"
+xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon"
+xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"
+xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+xmlns:viewmodel="clr-namespace:NorthwindClient.ViewModels"
+xmlns:system="clr-namespace:System;assembly=mscorlib"
+
+mc:Ignorable="d"
+d:DesignHeight="400" d:DesignWidth="600"
+DataContext="{dxmvvm:ViewModelSource viewmodel:ProductViewModel}">
+    <dxmvvm:Interaction.Behaviors>
+        <dx:DXMessageBoxService/>
+    </dxmvvm:Interaction.Behaviors>
+
+    <Grid>
+        <DockPanel>
+            <dxr:RibbonControl RibbonStyle="Office2010" DockPanel.Dock="Top">
+                <dxr:RibbonDefaultPageCategory Caption="defaultCategory">
+                    <dxr:RibbonPage Caption="Home">
+                        <dxr:RibbonPageGroup Caption="Product Tasks">
+                            <dxb:BarButtonItem Content="Save" Command="{Binding SaveCommand}" LargeGlyph="{dx:DXImage Image=Save_32x32.png}" Glyph="{dx:DXImage Image=Save_16x16.png}"/>
+                            <dxb:BarButtonItem Content="Save And Close" Command="{Binding SaveAndCloseCommand}" LargeGlyph="{dx:DXImage Image=SaveAndClose_32x32.png}" Glyph="{dx:DXImage Image=SaveAndClose_16x16.png}"/>
+                            <dxb:BarButtonItem Content="Reset Changes" Command="{Binding ResetCommand}" LargeGlyph="{dx:DXImage Image=Reset_32x32.png}" Glyph="{dx:DXImage Image=Reset_16x16.png}"/>
+                            <dxb:BarButtonItem Content="Delete" Command="{Binding DeleteCommand}" LargeGlyph="{dx:DXImage Image=Delete_32x32.png}" Glyph="{dx:DXImage Image=Delete_16x16.png}"/>
+                            <dxb:BarButtonItem Content="Close" Command="{Binding CloseCommand}" LargeGlyph="{dx:DXImage Image=Close_32x32.png}" Glyph="{dx:DXImage Image=Close_16x16.png}"/>
+                        </dxr:RibbonPageGroup>
+                    </dxr:RibbonPage>
+                </dxr:RibbonDefaultPageCategory>
+            </dxr:RibbonControl>
+            <dxr:RibbonStatusBarControl DockPanel.Dock="Bottom"/>
+            <Grid>
+                <dxlc:LayoutControl Orientation="Vertical">
+                    <dxmvvm:Interaction.Behaviors>
+                        <dxmvvm:EventToCommand Event="{x:Static Binding.SourceUpdatedEvent}" Command="{Binding UpdateCommand}" />
+                    </dxmvvm:Interaction.Behaviors>
+                    <dxlc:LayoutItem Label="Product ID" >
+                        <dxe:TextEdit EditValue="{Binding Entity.ProductID, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnSourceUpdated=True}" MaskType="Numeric" Mask="d" MaskUseAsDisplayFormat="True" HorizontalContentAlignment="Right" />
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Label="Product Name" >
+                        <dxe:TextEdit EditValue="{Binding Entity.ProductName, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnSourceUpdated=True}" />
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Label="Quantity Per Unit" >
+                        <dxe:TextEdit EditValue="{Binding Entity.QuantityPerUnit, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnSourceUpdated=True}" />
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Label="Unit Price" >
+                        <dxe:TextEdit EditValue="{Binding Entity.UnitPrice, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnSourceUpdated=True}" MaskType="Numeric" HorizontalContentAlignment="Right" EditValueType="system:Decimal" AllowNullInput="True" />
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Label="Units In Stock" >
+                        <dxe:TextEdit EditValue="{Binding Entity.UnitsInStock, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnSourceUpdated=True}" MaskType="Numeric" Mask="d" MaskUseAsDisplayFormat="True" HorizontalContentAlignment="Right" EditValueType="system:Int16" AllowNullInput="True" />
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Label="Units On Order" >
+                        <dxe:TextEdit EditValue="{Binding Entity.UnitsOnOrder, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnSourceUpdated=True}" MaskType="Numeric" Mask="d" MaskUseAsDisplayFormat="True" HorizontalContentAlignment="Right" EditValueType="system:Int16" AllowNullInput="True" />
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Label="Reorder Level" >
+                        <dxe:TextEdit EditValue="{Binding Entity.ReorderLevel, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnSourceUpdated=True}" MaskType="Numeric" Mask="d" MaskUseAsDisplayFormat="True" HorizontalContentAlignment="Right" EditValueType="system:Int16" AllowNullInput="True" />
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Label="Discontinued" >
+                        <dxe:CheckEdit EditValue="{Binding Entity.Discontinued, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnSourceUpdated=True}" />
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Label="Category" >
+                        <dxg:LookUpEdit EditValue="{Binding Entity.CategoryID, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnSourceUpdated=True}" ItemsSource="{Binding LookUpCategories.Entities}" ValueMember="CategoryID" DisplayMember="CategoryName" IsTextEditable="False" AllowUpdateTwoWayBoundPropertiesOnSynchronization="False" >
+                            <dxg:LookUpEdit.PopupContentTemplate>
+                                <ControlTemplate TargetType="ContentControl" >
+                                    <dxg:GridControl x:Name="PART_GridControl" ShowBorder="False" ShowLoadingPanel="{Binding LookUpCategories.IsLoading}" />
+                                </ControlTemplate>
+                            </dxg:LookUpEdit.PopupContentTemplate>
+                        </dxg:LookUpEdit>
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Label="Supplier" >
+                        <dxg:LookUpEdit EditValue="{Binding Entity.SupplierID, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnSourceUpdated=True}" ItemsSource="{Binding LookUpSuppliers.Entities}" ValueMember="SupplierID" DisplayMember="CompanyName" IsTextEditable="False" AllowUpdateTwoWayBoundPropertiesOnSynchronization="False" >
+                            <dxg:LookUpEdit.PopupContentTemplate>
+                                <ControlTemplate TargetType="ContentControl" >
+                                    <dxg:GridControl x:Name="PART_GridControl" ShowBorder="False" ShowLoadingPanel="{Binding LookUpSuppliers.IsLoading}" />
+                                </ControlTemplate>
+                            </dxg:LookUpEdit.PopupContentTemplate>
+                        </dxg:LookUpEdit>
+                    </dxlc:LayoutItem>
+
+                    <dxlc:LayoutGroup View="Tabs" MinHeight="250">
+                        <Grid dxb:MergingProperties.AllowMerging="False" dxb:BarNameScope.IsScopeOwner="True" DataContext="{Binding ProductOrder_DetailsDetails}" dxlc:LayoutControl.TabHeader="Order_Details">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <dxb:ToolBarControl>
+                                <dxb:BarButtonItem BarItemDisplayMode="ContentAndGlyph" Content="Refresh" Command="{Binding RefreshCommand}"  Glyph="{dx:DXImage Image=Refresh_16x16.png}"/>
+                            </dxb:ToolBarControl>
+                            <dxg:GridControl ItemsSource="{Binding Entities}" SelectedItem="{Binding SelectedEntity}" ShowLoadingPanel="{Binding IsLoading}" Grid.Row="1">
+                                <dxg:GridControl.Columns>
+                                    <dxg:GridColumn IsSmart="True" FieldName="UnitPrice" />
+                                    <dxg:GridColumn IsSmart="True" FieldName="Quantity" />
+                                    <dxg:GridColumn IsSmart="True" FieldName="Discount" />
+                                    <dxg:GridColumn FieldName="Order.ShipName" Header="Order" ReadOnly="True" />
+                                    <dxg:GridColumn FieldName="Product.ProductName" Header="Product" ReadOnly="True" />
+                                </dxg:GridControl.Columns>
+                                <dxg:GridControl.TotalSummary>
+                                    <dxg:GridSummaryItem SummaryType="Count" Alignment="Right"/>
+                                </dxg:GridControl.TotalSummary>
+                                <dxg:GridControl.GroupSummary>
+                                    <dxg:GridSummaryItem SummaryType="Count"/>
+                                </dxg:GridControl.GroupSummary>
+                                <dxg:GridControl.View>
+                                    <dxg:TableView AllowEditing="False" ShowFixedTotalSummary="True" AllowPerPixelScrolling="True" ShowGroupPanel="False">
+                                        <dxg:TableView.RowCellMenuCustomizations>
+                                            <dxb:BarButtonItem Content="Refresh" Command="{Binding View.DataContext.RefreshCommand}"  Glyph="{dx:DXImage Image=Refresh_16x16.png}"/>
+                                        </dxg:TableView.RowCellMenuCustomizations>
+                                    </dxg:TableView>
+                                </dxg:GridControl.View>
+                            </dxg:GridControl>
+                        </Grid>
+                    </dxlc:LayoutGroup>
+                </dxlc:LayoutControl>
+            </Grid>
+        </DockPanel>
+    </Grid>
+</UserControl>
